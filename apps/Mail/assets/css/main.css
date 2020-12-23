@@ -7,5 +7,6 @@
 
 /* Components */
 
-@import './cmps/EmailList.css'
+@import './cmps/EmailList.css';
+@import './cmps/EmailPreview.css';
 /* './apps/email-app/cmps/EmailList.css'; */
