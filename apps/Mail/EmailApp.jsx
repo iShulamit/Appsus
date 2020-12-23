@@ -27,12 +27,12 @@ export class EmailApp extends React.Component {
         console.log('adding mail');
         ev.preventDefault();
         // const emailToAdd = { subject: 'Bla', body: 'well', isRead: false, sentAt: 1551133930597 }
-        // if (this.state.emailToAdd.recipient ||
-        //     this.state.emailToAdd.subject ||
-        //     this.state.emailToAdd.subject === '') {
-        //     alert('must enter text in all fields')
-        //     return
-        // }
+        if (this.state.emailToAdd.recipient === '' ||
+            this.state.emailToAdd.subject === '' ||
+            this.state.emailToAdd.body === '') {
+            alert('must enter text in all fields')
+            return
+        }
 
         emailService.add(this.state.emailToAdd);
         this.loadEmails();
