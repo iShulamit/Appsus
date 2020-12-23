@@ -1,7 +1,7 @@
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
 
-import { EmailApp } from "./pages/EmailApp.jsx";
+import { EmailApp } from "./apps/Mail/EmailApp.jsx";
 
 // Simple React Component
 export class RootCmp extends React.Component {
