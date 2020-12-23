@@ -1,5 +1,6 @@
 import { emailService } from "./services/emailService.js"
 import { EmailList } from './cmps/EmailList.jsx'
+import { EmailFilter } from "./cmps/EmailFilter.jsx";
 
 export class EmailApp extends React.Component {
 
@@ -9,6 +10,11 @@ export class EmailApp extends React.Component {
             recipient: '',
             subject: '',
             body: '',
+        },
+        filterBy: {
+            recipient: '',
+            subject: '',
+            body: ''
         }
     }
 
@@ -56,11 +62,23 @@ export class EmailApp extends React.Component {
         this.loadEmails();
     }
 
+    getEmailsForDisplay = () => {
+        const { filterBy } = this.state;
+        return this.state.emails.filter(email => {
+            return email.recipient.toLowerCase().includes(filterBy.recipient.toLowerCase());
+        })
+    }
+
+    onSetFilter = (filterBy) => {
+        this.setState({ filterBy });
+    }
+
     render() {
         const { emails } = this.state;
         return (
             <section className="email-app">
                 <h1>EmailApp</h1>
+                <EmailFilter setFilter={this.onSetFilter} />
                 <section className="email-list">
                     <button>Compose</button>
                     {/* compose buttone needs to open a modal which is the following form */}
@@ -81,7 +99,7 @@ export class EmailApp extends React.Component {
 
                     </form>
 
-                    <EmailList emails={this.state.emails} onRemove={this.onRemoveEmail}/>
+                    <EmailList emails={this.getEmailsForDisplay()} onRemove={this.onRemoveEmail} />
 
                 </section>
 
