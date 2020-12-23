@@ -3,12 +3,13 @@ import { utilService } from './utilService.js'
 
 export const emailService = {
     query,
-    add
+    add,
+    remove
 }
 
 var emails = [
     { id: 'i101', recipient: 'Dudi', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
-    { id: 'i102', recipient: 'Mudi', subject: 'Hoe r u?', body: 'Hi there', isRead: false, sentAt: 1551133930694 },
+    { id: 'i102', recipient: 'Mudi', subject: 'How r u?', body: 'Hi there', isRead: false, sentAt: 1551133930694 },
     { id: 'i103', recipient: 'Rudi', subject: 'You Won!', body: 'a brand new something', isRead: false, sentAt: 1551133930794 }
 ]
 
@@ -19,8 +20,9 @@ function query() {
 
 function add(email) {
     const emailToAdd = {
-        id: utilService.makeId(),
-        ...email
+        ...email,
+        id: utilService.makeId()
+
     };
     emails = [emailToAdd, ...emails]
     return emailToAdd;
@@ -30,6 +32,10 @@ function add(email) {
     // gEmails = emailsCopy;
     // _saveEmailsToStorage();
     // return Promise.resolve(emailToUpdate);
+}
+
+function remove(emailId) {
+    emails = emails.filter(email => email.id !== emailId);
 }
 
 // function _getDemoEmails() {

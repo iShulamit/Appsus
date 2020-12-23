@@ -1,4 +1,4 @@
-export function EmailPreview({ email }) {
+export function EmailPreview({ email, onRemove }) {
     return (
         <table className="email-preview">
             {/* <TableHead>
@@ -21,6 +21,7 @@ export function EmailPreview({ email }) {
                     <td>{email.subject}</td>
                     <td>{email.body}</td>
                     <td>{email.date}</td>
+                    <td><button onClick={()=>onRemove(email.id)}>Remove</button></td>
                 </tr>
             </tbody>
         </table>
