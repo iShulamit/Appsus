@@ -1,12 +1,14 @@
 // const Router = ReactRouterDOM.HashRouter;
 // const { Route, Switch } = ReactRouterDOM;
 
+import { EmailApp } from "./pages/EmailApp";
+
 // Simple React Component
 export class RootCmp extends React.Component {
 
     render() {
         return (
-            <h1>Hello</h1>
+            <EmailApp />
             // <Router>
             //     <section className="app">
             //         <AppHeader />
