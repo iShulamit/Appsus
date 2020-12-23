@@ -7,8 +7,8 @@ export const emailService = {
 
 var emails = [
     { id: 'i101', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
-    { id: 'i102',subject: 'Hoe r u?', body: 'Hi there', isRead: false, sentAt: 1551133930694 },
-    { id: 'i103',subject: 'You Won!', body: 'a brand new something', isRead: false, sentAt: 1551133930794 }
+    { id: 'i102', subject: 'Hoe r u?', body: 'Hi there', isRead: false, sentAt: 1551133930694 },
+    { id: 'i103', subject: 'You Won!', body: 'a brand new something', isRead: false, sentAt: 1551133930794 }
 ]
 
 function query() {

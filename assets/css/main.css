@@ -3,3 +3,7 @@
 /* Basics */
 
 @import './basics/base.css';
+
+/* Components */
+
+@import './apps/email-app/cmps/EmailList.css'
