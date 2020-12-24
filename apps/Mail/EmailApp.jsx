@@ -1,6 +1,7 @@
-import { emailService } from "./services/emailService.js"
+import { emailService } from './services/emailService.js'
 import { EmailList } from './cmps/EmailList.jsx'
-import { EmailFilter } from "./cmps/EmailFilter.jsx";
+import { EmailFilter } from './cmps/EmailFilter.jsx'
+
 
 export class EmailApp extends React.Component {
 
