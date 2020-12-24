@@ -27,6 +27,12 @@ a:hover {
     cursor: pointer;
 }
 
+
+/* nav .active {
+    color: rgb(187, 154, 223);
+    text-decoration: underline;
+} */
+
 ul {
     list-style-type: none;
 }
