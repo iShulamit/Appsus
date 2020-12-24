@@ -1,0 +1,21 @@
+html, body, div, header, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(250, 231, 246);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+img {
+    width: 500px;
+}
