@@ -1,4 +1,5 @@
 import { emailService } from "../services/emailService.js"
+const { Link } = ReactRouterDOM
 
 export class EmailDetails extends React.Component {
 
@@ -32,6 +33,7 @@ export class EmailDetails extends React.Component {
                 {this.state.email.subject} <br />
                 {this.state.email.body} <br />
                 <button onClick={this.onRemove}>Remove</button>
+                <Link to={`/email/edit/${this.state.email.id}`}>Edit Email</Link>
             </section>
         )
     }

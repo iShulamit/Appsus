@@ -19,7 +19,7 @@ function query() {
     //return Promise.resolve(emails)
 }
 
-function save(email){
+function save(email) {
     if (email.id) {
         _update(email)
     } else {
@@ -43,9 +43,14 @@ function _add(email) {
     // return Promise.resolve(emailToUpdate);
 }
 
-function _update (emailToSave) {
+function _update(emailToSave) {
+
+    // const emailToSave = {
+    //     ...email
+    // }
+
     const emailsCopy = [...emails]
-    const emailIndex = emails.findIndex(email=>email.id ===emailToSave.id)
+    const emailIndex = emails.findIndex(email => email.id === emailToSave.id)
     emailsCopy[emailIndex] = emailToSave;
 
     emails = emailsCopy;

@@ -20,7 +20,7 @@ export class RootCmp extends React.Component {
                     <Switch>
                         <Route path="/keep" component={KeepApp} />
                         <Route path="/book" component={BookApp} />
-                        <Route path="/email/edit/:emailId" component={EmailEdit} />
+                        <Route path="/email/edit/:emailId?" component={EmailEdit} />
                         <Route path="/email/:emailId" component={EmailDetails} />
                         <Route path="/email" component={EmailApp} />
                         {/* <Route path="/about" component={About} /> */}

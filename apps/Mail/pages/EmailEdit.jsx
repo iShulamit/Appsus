@@ -13,8 +13,8 @@ export class EmailEdit extends React.Component {
     componentDidMount() {
         const { emailId } = this.props.match.params;
         const email = emailService.getById(emailId);
+        if (!emailId) return;
         this.setState({ email: email })
-    
     }
 
 
@@ -31,7 +31,7 @@ export class EmailEdit extends React.Component {
 
         emailService.save(this.state.email);
         this.props.history.push('/email')
-        
+
     }
 
     onInputChange = (ev) => {
