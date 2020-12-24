@@ -1,0 +1,20 @@
+.app-header {
+    background-color: rgb(231, 231, 231);
+    color: whitesmoke;
+}
+
+/* .app-header h1 {
+    font-size: 2em;
+} */
+
+.app-header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.app-header nav li{
+    display: inline-block;
+    margin: .5em;
+    text-align: center;
+}
+
