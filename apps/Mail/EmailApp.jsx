@@ -1,6 +1,7 @@
 import { emailService } from './services/emailService.js'
 import { EmailList } from './cmps/EmailList.jsx'
 import { EmailFilter } from './cmps/EmailFilter.jsx'
+import { eventBusService } from './services/eventBusService.js'
 
 const { Link } = ReactRouterDOM
 
@@ -12,12 +13,22 @@ export class EmailApp extends React.Component {
             recipient: '',
             subject: '',
             body: ''
-        }
+        },
+        message: ''
     }
 
+    unsubscribe;
     componentDidMount() {
         this.loadEmails();
         // console.log('emails:', emails);
+        this.unsubscribe = eventBusService.on(`notification`, (data) => {
+            this.setState({ message: data.message });
+        })
+    }
+
+    componeneDidUnmount() {
+        console.log('unsubscribing');
+        this.unsubscribe();
     }
 
     loadEmails = () => {
@@ -50,6 +61,7 @@ export class EmailApp extends React.Component {
         return (
             <section className="email-app">
                 <h1>EmailApp</h1>
+                {this.state.message && <h1>Message is: {this.state.message}</h1>}
                 <EmailFilter setFilter={this.onSetFilter} />
                 <section className="email-list">
 

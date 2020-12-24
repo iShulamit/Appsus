@@ -1,4 +1,5 @@
 // import { EmailList } from "./EmailList";
+import { eventBusService } from '../services/eventBusService.js'
 
 const { Link } = ReactRouterDOM;
 
@@ -16,6 +17,7 @@ export function EmailPreview({ email, onRemove }) {
 
                         <button onClick={(ev) => {
                             ev.preventDefault();
+                            eventBusService.emit(`notification`, {message: email.subject + ' Deleted'});
                             onRemove(email.id)}}
                             >Remove</button>
                     </li>
