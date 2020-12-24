@@ -5,6 +5,7 @@ import { Home } from "./pages/Home.jsx";
 import { EmailApp } from "./apps/Mail/EmailApp.jsx";
 import { KeepApp } from "./apps/Keep/KeepApp.jsx";
 import { BookApp } from "./apps/Books/BooksApp.jsx";
+import { EmailDetails } from "./apps/Mail/pages/EmailDetails.jsx";
 
 // Simple React Component
 export class RootCmp extends React.Component {
@@ -26,7 +27,7 @@ export class RootCmp extends React.Component {
                         <Route path="/keep" component={KeepApp} />
                         <Route path="/book" component={BookApp} />
                         {/* <Route path="/pet/edit/:petId?" component={PetEdit} /> */}
-                        {/* <Route path="/pet/:petId" component={PetDetails} /> */}
+                        <Route path="/email/:emailId" component={EmailDetails} />
                         <Route path="/email" component={EmailApp} />
                         {/* <Route path="/about" component={About} /> */}
                         <Route path="/" component={Home} />

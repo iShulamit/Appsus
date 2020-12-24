@@ -4,7 +4,8 @@ import { utilService } from './utilService.js'
 export const emailService = {
     query,
     add,
-    remove
+    remove,
+    getById
 }
 
 var emails = [
@@ -36,6 +37,10 @@ function add(email) {
 
 function remove(emailId) {
     emails = emails.filter(email => email.id !== emailId);
+}
+
+function getById(emailId) {
+    return emails.find(email => email.id === emailId)
 }
 
 // function _getDemoEmails() {
