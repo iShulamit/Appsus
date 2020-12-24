@@ -3,9 +3,9 @@ import { utilService } from './utilService.js'
 
 export const emailService = {
     query,
-    add,
     remove,
-    getById
+    getById,
+    save
 }
 
 var emails = [
@@ -19,7 +19,15 @@ function query() {
     //return Promise.resolve(emails)
 }
 
-function add(email) {
+function save(email){
+    if (email.id) {
+        _update(email)
+    } else {
+        _add(email)
+    }
+}
+
+function _add(email) {
     const emailToAdd = {
         ...email,
         id: utilService.makeId()
@@ -33,6 +41,14 @@ function add(email) {
     // gEmails = emailsCopy;
     // _saveEmailsToStorage();
     // return Promise.resolve(emailToUpdate);
+}
+
+function _update (emailToSave) {
+    const emailsCopy = [...emails]
+    const emailIndex = emails.findIndex(email=>email.id ===emailToSave.id)
+    emailsCopy[emailIndex] = emailToSave;
+
+    emails = emailsCopy;
 }
 
 function remove(emailId) {

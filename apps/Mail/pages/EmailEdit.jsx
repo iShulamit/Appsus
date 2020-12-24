@@ -3,7 +3,7 @@ import { emailService } from "../services/emailService.js"
 export class EmailEdit extends React.Component {
 
     state = {
-        emailToAdd: {
+        email: {
             recipient: '',
             subject: '',
             body: '',
@@ -13,35 +13,36 @@ export class EmailEdit extends React.Component {
     componentDidMount() {
         const { emailId } = this.props.match.params;
         const email = emailService.getById(emailId);
-        this.setState({ emailToAdd: email })
+        this.setState({ email: email })
     
     }
 
 
-    onAddEmail = (ev) => {
+    onSaveEmail = (ev) => {
         console.log('adding mail');
         ev.preventDefault();
         // const emailToAdd = { subject: 'Bla', body: 'well', isRead: false, sentAt: 1551133930597 }
-        if (this.state.emailToAdd.recipient === '' ||
-            this.state.emailToAdd.subject === '' ||
-            this.state.emailToAdd.body === '') {
+        if (this.state.email.recipient === '' ||
+            this.state.email.subject === '' ||
+            this.state.email.body === '') {
             alert('must enter text in all fields')
             return
         }
 
-        emailService.add(this.state.emailToAdd);
-        this.loadEmails();
+        emailService.save(this.state.email);
+        this.props.history.push('/email')
+        
     }
 
     onInputChange = (ev) => {
         // console.log('ev.target:', ev.target);
         // const value = (ev.target.type === 'number') ? +ev.target.value : ev.target.value;  //no need since all inputs are txt
 
-        const emailCopy = { ...this.state.emailToAdd };
+        const emailCopy = { ...this.state.email };
         emailCopy[ev.target.name] = ev.target.value;
 
         this.setState({
-            emailToAdd: emailCopy
+            email: emailCopy
         })
     }
 
@@ -51,17 +52,17 @@ export class EmailEdit extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.onAddEmail}>
+            <form onSubmit={this.onSaveEmail}>
 
-                <input value={this.state.emailToAdd.recipient}
+                <input value={this.state.email.recipient}
                     placeholder="To" type="text" name="recipient"
                     onChange={this.onInputChange} />
 
-                <input value={this.state.emailToAdd.subject}
+                <input value={this.state.email.subject}
                     placeholder="Email subject" type="text" name="subject"
                     onChange={this.onInputChange} />
 
-                <input value={this.state.emailToAdd.body}
+                <input value={this.state.email.body}
                     placeholder="Email body" type="text" name="body"
                     onChange={this.onInputChange} />
                 <button>send</button>
