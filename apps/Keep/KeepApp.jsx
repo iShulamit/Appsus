@@ -14,7 +14,7 @@ export class KeepApp extends React.Component {
         return (
             <section className="keep-app">
                 <h1>KeepApp</h1>
-                <img src="../../assets/img/construction.gif"/>
+                <img src="./assets/img/construction.gif"/>
             </section>
 
         )

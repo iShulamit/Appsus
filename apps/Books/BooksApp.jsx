@@ -1,4 +1,6 @@
 
+""
+
 export class BookApp extends React.Component {
 
     state = {
@@ -14,7 +16,7 @@ export class BookApp extends React.Component {
         return (
             <section className="book-app">
                 <h1>BookApp</h1>
-                <img src="../../assets/img/construction.gif"/>
+                <img src="./assets/img/construction.gif"/>
             </section>
 
         )
