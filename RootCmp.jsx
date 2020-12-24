@@ -1,11 +1,13 @@
 const Router = ReactRouterDOM.HashRouter;
-const { Route, Switch, NavLink } = ReactRouterDOM;
+const { Route, Switch } = ReactRouterDOM;
 
 import { Home } from "./pages/Home.jsx";
 import { EmailApp } from "./apps/Mail/EmailApp.jsx";
 import { KeepApp } from "./apps/Keep/KeepApp.jsx";
 import { BookApp } from "./apps/Books/BooksApp.jsx";
 import { EmailDetails } from "./apps/Mail/pages/EmailDetails.jsx";
+import { AppHeader } from "./cmps/AppHeader.jsx";
+import { EmailEdit } from "./apps/Mail/pages/EmailEdit.jsx";
 
 // Simple React Component
 export class RootCmp extends React.Component {
@@ -14,19 +16,11 @@ export class RootCmp extends React.Component {
         return (
             <Router>
                 <section className="app">
-                    {/* <AppHeader /> */}
-                    <nav>
-                        <ul>
-                            <li><NavLink to="/">Home</NavLink></li>
-                            <li><NavLink to="/email">Email</NavLink></li>
-                            <li><NavLink to="/keep">Keep</NavLink></li>
-                            <li><NavLink to="/book">Books</NavLink></li>
-                        </ul>
-                    </nav>
+                    <AppHeader />
                     <Switch>
                         <Route path="/keep" component={KeepApp} />
                         <Route path="/book" component={BookApp} />
-                        {/* <Route path="/pet/edit/:petId?" component={PetEdit} /> */}
+                        <Route path="/email/edit/:emailId" component={EmailEdit} />
                         <Route path="/email/:emailId" component={EmailDetails} />
                         <Route path="/email" component={EmailApp} />
                         {/* <Route path="/about" component={About} /> */}
