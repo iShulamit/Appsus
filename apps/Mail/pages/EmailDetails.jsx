@@ -10,12 +10,9 @@ export class EmailDetails extends React.Component {
     componentDidMount() {
         const { emailId } = this.props.match.params;
         // console.log('emailId', emailId);
-        const email = emailService.getById(emailId);
-        console.log('email:', email);
-        this.setState({ email })
-        // .then(email => {
-        //     this.setState({ email })
-        // })
+        emailService.getById(emailId).then(email => {
+            this.setState({ email })
+        })
     }
 
     onRemove = () => {

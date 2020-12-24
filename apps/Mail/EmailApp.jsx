@@ -21,15 +21,17 @@ export class EmailApp extends React.Component {
     }
 
     loadEmails = () => {
-        const emails = emailService.query();
-        this.setState({ emails });
+        emailService.query().then(emails => {
+            this.setState({ emails });
+        })
     }
 
 
     onRemoveEmail = (emailId) => {
         // console.log('removing emailId: ', emailId);
-        emailService.remove(emailId);
-        this.loadEmails();
+        emailService.remove(emailId).then(() => {
+            this.loadEmails();
+        })
     }
 
     getEmailsForDisplay = () => {
@@ -50,7 +52,7 @@ export class EmailApp extends React.Component {
                 <h1>EmailApp</h1>
                 <EmailFilter setFilter={this.onSetFilter} />
                 <section className="email-list">
-                    
+
                     {/* compose button needs to open a modal which is the following form */}
                     <Link to={"/email/edit"}><button>Compose</button></Link>
                     <EmailList emails={this.getEmailsForDisplay()} onRemove={this.onRemoveEmail} />

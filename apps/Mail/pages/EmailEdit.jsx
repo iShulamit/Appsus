@@ -10,16 +10,22 @@ export class EmailEdit extends React.Component {
         },
     }
 
+    elInput = React.createRef();
+
     componentDidMount() {
         const { emailId } = this.props.match.params;
-        const email = emailService.getById(emailId);
+
+        this.elInput.current.focus();
+
         if (!emailId) return;
-        this.setState({ email: email })
+        emailService.getById(emailId).then(email => {
+            this.setState({ email })
+        })
     }
 
 
     onSaveEmail = (ev) => {
-        console.log('adding mail');
+        // console.log('adding mail');
         ev.preventDefault();
         // const emailToAdd = { subject: 'Bla', body: 'well', isRead: false, sentAt: 1551133930597 }
         if (this.state.email.recipient === '' ||
@@ -46,15 +52,11 @@ export class EmailEdit extends React.Component {
         })
     }
 
-
-
-
-
     render() {
         return (
             <form onSubmit={this.onSaveEmail}>
 
-                <input value={this.state.email.recipient}
+                <input value={this.state.email.recipient} ref={this.elInput}
                     placeholder="To" type="text" name="recipient"
                     onChange={this.onInputChange} />
 

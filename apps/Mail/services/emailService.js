@@ -15,8 +15,7 @@ var emails = [
 ]
 
 function query() {
-    return emails;
-    //return Promise.resolve(emails)
+    return Promise.resolve(emails);
 }
 
 function save(email) {
@@ -58,10 +57,12 @@ function _update(emailToSave) {
 
 function remove(emailId) {
     emails = emails.filter(email => email.id !== emailId);
+    return Promise.resolve();
 }
 
 function getById(emailId) {
-    return emails.find(email => email.id === emailId)
+    const email =  emails.find(email => email.id === emailId);
+    return Promise.resolve(email);
 }
 
 // function _getDemoEmails() {
