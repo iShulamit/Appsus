@@ -28,9 +28,9 @@ function query() {
 
 function save(email) {
     if (email.id) {
-        _update(email)
+        return _update(email)
     } else {
-        _add(email)
+        return _add(email)
     }
 }
 
@@ -40,24 +40,17 @@ function _add(email) {
         ...email
     };
     gEmails = [emailToAdd, ...gEmails]
+    _saveEmailsToStorage();
     return Promise.resolve(emailToAdd);
-
-    // const emailsCopy = [...gEmails];
-    // const emailIdx = emailCopy.findIndex(email => email.id === email.id);
-    // emailsCopy[emailIdx] = emailToUpdate;
-    // gEmails = emailsCopy;
-    // _saveEmailsToStorage();
-    // return Promise.resolve(emailToUpdate);
 }
 
 function _update(email) {
     const emailToUpdate = {
         ...email
     }
-    const emailsCopy = [...gEmails]
-    const emailIdx = emailsCopy.findIndex(email => email.id === email.id)
+    const emailsCopy = [...gEmails];
+    const emailIdx = emailsCopy.findIndex(email => email.id === email.id);
     emailsCopy[emailIdx] = emailToUpdate;
-
     gEmails = emailsCopy;
     _saveEmailsToStorage();
     return Promise.resolve(emailToUpdate);

@@ -35,8 +35,7 @@ export class EmailEdit extends React.Component {
             return
         }
 
-        emailService.save(this.state.email)
-            .then(savedEmail => {
+        emailService.save(this.state.email).then(savedEmail => {
                 console.log('Saves succesfully', savedEmail);
                 this.props.history.push('/email');
             })
