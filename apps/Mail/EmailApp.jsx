@@ -76,6 +76,8 @@ export class EmailApp extends React.Component {
         return (
             <section className="email-app">
                 <h1>EmailApp</h1>
+                {/* <input type="text" /> */}
+                {/* <input type="email" id="contact" name="contact" list="contactList"></input> */}
                 {this.state.message && <h1>Message is: {this.state.message}</h1>}
                 <EmailFilter setFilter={this.onSetFilter} />
                     {/* compose button needs to open a modal which is the following form */}

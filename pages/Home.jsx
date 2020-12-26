@@ -9,7 +9,7 @@ export class Home extends React.Component {
     render() {
         return (
             <section className="home-page">
-                <h1>This is my Appsus</h1>
+                {/* <div className="home-title"><h1>Welcome to my Appsus</h1></div> */}
                 <div className="home-links">
                     <Link to={"/email"}><img src="../assets/img/email.png" /></Link>
                     <Link to={"/keep"}><img src="../assets/img/keep.png" /></Link>

@@ -4,7 +4,7 @@ export class EmailFilter extends React.Component {
         filterBy: {
             recipient: '',
             subject: '',
-            body: ''
+            body: '',
         }
     }
 
