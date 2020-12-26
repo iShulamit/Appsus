@@ -1,4 +1,4 @@
-/* @import '../../../../lib/animate.css';
+@import '../../../../lib/animate.css';
 
 
 @import './basics/base.css';
@@ -6,4 +6,4 @@
 
 @import './cmps/EmailApp.css';
 @import './cmps/EmailList.css';
-@import './cmps/EmailPreview.css'; */
+@import './cmps/EmailPreview.css';

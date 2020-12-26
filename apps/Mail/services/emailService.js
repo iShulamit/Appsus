@@ -1,6 +1,7 @@
 import { utilService } from './utilService.js'
-// import { storageService } from './storageService.js'
+import { storageService } from './storageService.js'
 
+const KEY = 'emailsDB';
 export const emailService = {
     query,
     remove,
@@ -8,14 +9,21 @@ export const emailService = {
     save
 }
 
-var emails = [
-    { id: 'i101', recipient: 'Dudi', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
-    { id: 'i102', recipient: 'Mudi', subject: 'How r u?', body: 'Hi there', isRead: false, sentAt: 1551133930694 },
-    { id: 'i103', recipient: 'Rudi', subject: 'You Won!', body: 'a brand new something', isRead: false, sentAt: 1551133930794 }
-]
+var gEmails;
+_createEmails();
+
+function _createEmails() {
+    // Try loading from localStorage
+    gEmails = storageService.load(KEY);
+    if (!gEmails || !gEmails.length) {
+        // Nothing in localStorage, use demo data
+        gEmails = _getDemoEmails()
+        _saveEmailsToStorage();
+    }
+}
 
 function query() {
-    return Promise.resolve(emails);
+    return Promise.resolve(gEmails);
 }
 
 function save(email) {
@@ -28,12 +36,12 @@ function save(email) {
 
 function _add(email) {
     const emailToAdd = {
-        ...email,
-        id: utilService.makeId()
-
+        id: utilService.makeId(),
+        ...email
     };
-    emails = [emailToAdd, ...emails]
-    return emailToAdd;
+    gEmails = [emailToAdd, ...gEmails]
+    return Promise.resolve(emailToAdd);
+
     // const emailsCopy = [...gEmails];
     // const emailIdx = emailCopy.findIndex(email => email.id === email.id);
     // emailsCopy[emailIdx] = emailToUpdate;
@@ -42,34 +50,39 @@ function _add(email) {
     // return Promise.resolve(emailToUpdate);
 }
 
-function _update(emailToSave) {
+function _update(email) {
+    const emailToUpdate = {
+        ...email
+    }
+    const emailsCopy = [...gEmails]
+    const emailIdx = emailsCopy.findIndex(email => email.id === email.id)
+    emailsCopy[emailIdx] = emailToUpdate;
 
-    // const emailToSave = {
-    //     ...email
-    // }
-
-    const emailsCopy = [...emails]
-    const emailIndex = emails.findIndex(email => email.id === emailToSave.id)
-    emailsCopy[emailIndex] = emailToSave;
-
-    emails = emailsCopy;
+    gEmails = emailsCopy;
+    _saveEmailsToStorage();
+    return Promise.resolve(emailToUpdate);
 }
 
 function remove(emailId) {
-    emails = emails.filter(email => email.id !== emailId);
+    gEmails = gEmails.filter(email => email.id !== emailId);
+    _saveEmailsToStorage();
     return Promise.resolve();
 }
 
 function getById(emailId) {
-    const email =  emails.find(email => email.id === emailId);
+    const email = gEmails.find(email => email.id === emailId);
     return Promise.resolve(email);
 }
 
-// function _getDemoEmails() {
-//     const emails = [
-//         {subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt : 1551133930594},
-//         {subject: 'Hoe r u?', body: 'Hi there', isRead: false, sentAt : 1551133930694},
-//         {subject: 'You Won!', body: 'a brand new something', isRead: false, sentAt : 1551133930794}
-//     ]
-//     return emails;
-// }
+function _saveEmailsToStorage() {
+    storageService.save(KEY, gEmails)
+}
+
+function _getDemoEmails() {
+    const emails = [
+        { id: 'i101', recipient: 'Dudi', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
+        { id: 'i102', recipient: 'Mudi', subject: 'How r u?', body: 'Hi there', isRead: false, sentAt: 1551133930694 },
+        { id: 'i103', recipient: 'Rudi', subject: 'You Won!', body: 'a brand new something', isRead: false, sentAt: 1551133930794 }
+    ]
+    return emails
+}

@@ -1,5 +1,6 @@
-.email-app .email-list img {
+.email-app img {
     height: 50px;
+    margin-top: 20px;
 }
 
 /* .email-list {

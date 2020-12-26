@@ -14,12 +14,15 @@ export function EmailPreview({ email, onRemove }) {
                         <span className="email-detailes email-subject">{email.subject}</span>
                         <span>{email.body}</span>
                         <span>{email.date}</span>
-
-                        <button onClick={(ev) => {
-                            ev.preventDefault();
-                            eventBusService.emit(`notification`, {message: email.subject + ' Deleted'});
-                            onRemove(email.id)}}
+                        <div>
+                            <button onClick={(ev) => {
+                                ev.preventDefault();
+                                eventBusService.emit(`notification`, { message: email.subject + ' Deleted' });
+                                onRemove(email.id)
+                            }}
                             >Remove</button>
+                        </div>
+
                     </li>
                 </ul>
             </div>

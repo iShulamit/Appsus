@@ -16,7 +16,7 @@ export class EmailApp extends React.Component {
             body: ''
         },
         message: ''
-    };
+    }
 
     unsubscribe;
     componentDidMount() {
@@ -64,7 +64,7 @@ export class EmailApp extends React.Component {
     // }
 
     onSetFilter = (filterBy) => {
-        this.setState({ filterBy });
+        this.setState({ filterBy })
     }
 
     render() {
@@ -77,13 +77,9 @@ export class EmailApp extends React.Component {
                 <h1>EmailApp</h1>
                 {this.state.message && <h1>Message is: {this.state.message}</h1>}
                 <EmailFilter setFilter={this.onSetFilter} />
-                <section className="email-list">
                     {/* compose button needs to open a modal which is the following form */}
-                    <Link to={"/email/edit"}><img src="./assets/imgadd.gif"/></Link>
-                                  
+                    <Link to={"/email/edit"}><img src="./apps/Mail/assets/img/add.gif"/></Link>         
                     <EmailList emails={emailsForDisplay} onRemove={this.onRemoveEmail} />
-                </section>
-
             </section>
         )
     }

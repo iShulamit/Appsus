@@ -35,20 +35,20 @@ export class EmailEdit extends React.Component {
             return
         }
 
-        emailService.save(this.state.email);
-        this.props.history.push('/email')
-
+        emailService.save(this.state.email)
+            .then(savedEmail => {
+                console.log('Saves succesfully', savedEmail);
+                this.props.history.push('/email');
+            })
     }
 
     onInputChange = (ev) => {
         // console.log('ev.target:', ev.target);
         // const value = (ev.target.type === 'number') ? +ev.target.value : ev.target.value;  //no need since all inputs are txt
-
-        const emailCopy = { ...this.state.email };
-        emailCopy[ev.target.name] = ev.target.value;
-
+        const email = { ...this.state.email };
+        email[ev.target.name] = ev.target.value;
         this.setState({
-            email: emailCopy
+            email
         })
     }
 
@@ -67,7 +67,7 @@ export class EmailEdit extends React.Component {
                 <input value={this.state.email.body}
                     placeholder="Email body" type="text" name="body"
                     onChange={this.onInputChange} />
-                <button>send</button>
+                <button>{(this.state.email.id) ? 'Update' : 'Send'}</button>
 
             </form>
         )

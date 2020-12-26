@@ -15,7 +15,7 @@ export class EmailDetails extends React.Component {
         })
     }
 
-    onRemove = () => {
+    onBack = () => {
         this.props.history.push('/email')
     }
 
@@ -25,12 +25,12 @@ export class EmailDetails extends React.Component {
         }
         return (
             <section className="email-details">
-                <h1>Email Details</h1>
-                {this.state.email.recipient} <br />
-                {this.state.email.subject} <br />
-                {this.state.email.body} <br />
-                <button onClick={this.onRemove}>Remove</button>
-                <Link to={`/email/edit/${this.state.email.id}`}>Edit Email</Link>
+                {/* <h1>Email Details</h1> */}
+                <div className="mail-subject"><h1> {this.state.email.subject} </h1><hr /></div>
+                <div className="mail-recipient"><h6>From: {this.state.email.recipient} </h6><hr /></div>
+                <div className="mail-body">{this.state.email.body} <hr /></div>
+                <button onClick={this.onBack}>Back to inbox</button>
+                <Link className="btn" to={`/email/edit/${this.state.email.id}`}>Edit</Link>
             </section>
         )
     }
