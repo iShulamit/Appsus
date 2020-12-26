@@ -1,7 +1,7 @@
 import { emailService } from './services/emailService.js'
 import { EmailList } from './cmps/EmailList.jsx'
 import { EmailFilter } from './cmps/EmailFilter.jsx'
-// import { eventBusService } from './services/eventBusService.js'
+import { eventBusService } from './services/eventBusService.js'
 
 const { Link } = ReactRouterDOM
 
@@ -17,18 +17,18 @@ export class EmailApp extends React.Component {
         message: ''
     };
 
-    // unsubscribe;
+    unsubscribe;
     componentDidMount() {
         this.loadEmails();
         // console.log('emails:', emails);
-        // this.unsubscribe = eventBusService.on(`notification`, (data) => {
-        //     this.setState({ message: data.message });
-        // })
+        this.unsubscribe = eventBusService.on(`notification`, (data) => {
+            this.setState({ message: data.message });
+        })
     }
 
     componeneDidUnmount() {
         // console.log('unsubscribing');
-        // this.unsubscribe();
+        this.unsubscribe();
     }
 
     loadEmails = () => {
@@ -78,7 +78,9 @@ export class EmailApp extends React.Component {
                 <EmailFilter setFilter={this.onSetFilter} />
                 <section className="email-list">
                     {/* compose button needs to open a modal which is the following form */}
-                    <Link to={"/email/edit"}><button>Compose</button></Link>
+                    <Link to={"/email/edit"}>compose</Link>
+                    <img src="./assets/img/add.gif" />
+                
                     <EmailList emails={emailsForDisplay} onRemove={this.onRemoveEmail} />
                 </section>
 
