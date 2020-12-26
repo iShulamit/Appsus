@@ -11,6 +11,7 @@ export class EmailDetails extends React.Component {
         const { emailId } = this.props.match.params;
         // console.log('emailId', emailId);
         emailService.getById(emailId).then(email => {
+            email.isRead = true;
             this.setState({ email })
         })
     }

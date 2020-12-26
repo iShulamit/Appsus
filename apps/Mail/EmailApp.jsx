@@ -70,6 +70,7 @@ export class EmailApp extends React.Component {
     render() {
         // const { emails } = this.state;
         const emailsForDisplay = this.getEmailsForDisplay();
+        // console.log('emails=', emailsForDisplay);
         // const emailsForDisplay = this.emailsForDisplay;
 
         return (

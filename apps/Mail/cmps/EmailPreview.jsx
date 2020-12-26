@@ -10,8 +10,8 @@ export function EmailPreview({ email, onRemove }) {
             <div className="email-container">
                 <ul>
                     <li>
-                        <span className="email-detailes email-recipient">{email.recipient}</span>
-                        <span className="email-detailes email-subject">{email.subject}</span>
+                        <span className={(email.isRead ? "email-recipient" : "email-details email-recipient")}>{email.recipient}</span>
+                        <span className={(email.isRead ? "email-recipient" : "email-details email-subject")}>{email.subject}</span>
                         <span>{email.body}</span>
                         <span>{email.date}</span>
                         <div>
