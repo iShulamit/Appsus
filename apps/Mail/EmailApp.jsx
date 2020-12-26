@@ -2,6 +2,7 @@ import { emailService } from './services/emailService.js'
 import { EmailList } from './cmps/EmailList.jsx'
 import { EmailFilter } from './cmps/EmailFilter.jsx'
 import { eventBusService } from './services/eventBusService.js'
+// import { eventBusService } from '../Mail/assets/img'
 
 const { Link } = ReactRouterDOM
 
@@ -78,9 +79,8 @@ export class EmailApp extends React.Component {
                 <EmailFilter setFilter={this.onSetFilter} />
                 <section className="email-list">
                     {/* compose button needs to open a modal which is the following form */}
-                    <Link to={"/email/edit"}>compose</Link>
-                    <img src="./assets/img/add.gif" />
-                
+                    <Link to={"/email/edit"}><img src="./assets/imgadd.gif"/></Link>
+                                  
                     <EmailList emails={emailsForDisplay} onRemove={this.onRemoveEmail} />
                 </section>
 
