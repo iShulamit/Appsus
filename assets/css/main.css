@@ -10,8 +10,14 @@
 
 /* Apps */
 
+@import '../../apps/Keep/assets/css/basics/base.css';
+@import '../../apps/Books/assets/css/basics/base.css';
+
 /* EmailApp */
 
 @import '../../apps/Mail/assets/css/cmps/EmailApp.css';
-@import '../../apps/Mail/assets/css/cmps/EmailList.css';
 @import '../../apps/Mail/assets/css/cmps/EmailPreview.css';
+@import '../../apps/Mail/assets/css/cmps/EmailFilter.css';
+@import '../../apps/Mail/assets/css/cmps/EmailDetails.css';
+@import '../../apps/Mail/assets/css/cmps/EmailDetails.css';
+@import '../../apps/Mail/assets/css/cmps/EmailEdit.css';

@@ -42,7 +42,7 @@ export class EmailApp extends React.Component {
     onRemoveEmail = (emailId) => {
         // console.log('removing emailId: ', emailId);
         emailService.remove(emailId).then(() => {
-            // eventBusService.emit(`notification`, {message: email.subject + ' Deleted'});
+            // eventBusService.emit(`notification`, {message: email.subject + ' Delted'});
             this.loadEmails();
         })
     }
@@ -75,14 +75,16 @@ export class EmailApp extends React.Component {
 
         return (
             <section className="email-app">
-                <h1>EmailApp</h1>
+                {/* <h1>EmailApp</h1> */}
                 {/* <input type="text" /> */}
                 {/* <input type="email" id="contact" name="contact" list="contactList"></input> */}
-                {this.state.message && <h1>Message is: {this.state.message}</h1>}
                 <EmailFilter setFilter={this.onSetFilter} />
-                    {/* compose button needs to open a modal which is the following form */}
-                    <Link to={"/email/edit"}><img src="./apps/Mail/assets/img/add.gif"/></Link>         
-                    <EmailList emails={emailsForDisplay} onRemove={this.onRemoveEmail} />
+                {/* compose button needs to open a modal which is the following form */}
+
+                <Link to={"/email/edit"}><img src="./apps/Mail/assets/img/add.gif" /></Link>
+                {this.state.message && <h1 className="deleted-msg">Email: {this.state.message}</h1>}
+
+                <EmailList emails={emailsForDisplay} onRemove={this.onRemoveEmail} />
             </section>
         )
     }

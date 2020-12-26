@@ -8,13 +8,12 @@ export function EmailPreview({ email, onRemove }) {
         <Link to={`/email/${email.id}`}>
 
             <div className="email-container">
-                <ul>
-                    <li>
+              
                         <span className={(email.isRead ? "email-recipient" : "email-details email-recipient")}>{email.recipient}</span>
                         <span className={(email.isRead ? "email-recipient" : "email-details email-subject")}>{email.subject}</span>
                         <span>{email.body}</span>
                         <span>{email.date}</span>
-                        <div>
+                        <div className="remove-email">
                             <button onClick={(ev) => {
                                 ev.preventDefault();
                                 eventBusService.emit(`notification`, { message: email.subject + ' Deleted' });
@@ -23,8 +22,7 @@ export function EmailPreview({ email, onRemove }) {
                             >Remove</button>
                         </div>
 
-                    </li>
-                </ul>
+            
             </div>
         </Link>
     )

@@ -1,0 +1,12 @@
+.email-details {
+    margin: 20px 20px;
+}
+
+.btn {
+    background-color: rgb(243, 241, 241);
+    padding: 3px;
+    border-radius: 3px;
+    border: 2px solid black;
+    font-family: inherit;
+    font-size: 14px;
+}

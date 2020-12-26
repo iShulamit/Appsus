@@ -1,18 +1,21 @@
-ul {
-    list-style-type: none;
-    border: 1px solid blue;
-}
 
-li {
-    border: 1px solid red;
-    padding: 5px;
-    width:100%
+.email-container {
+    border-top: 1px solid black;
 }
 
 span {
     padding: 15px;
+    margin-left: 20px;
+}
+
+span.email-recipient {
+    margin-left: 15px;
 }
 
 span.email-details {
     font-weight: bold;
+}
+
+.remove-email {
+    display: inline-flex;
 }

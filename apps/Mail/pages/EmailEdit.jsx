@@ -53,19 +53,19 @@ export class EmailEdit extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.onSaveEmail}>
+            <form className="email-edit" onSubmit={this.onSaveEmail}>
 
                 <input value={this.state.email.recipient} ref={this.elInput}
                     placeholder="To" type="text" name="recipient"
-                    onChange={this.onInputChange} />
+                    onChange={this.onInputChange} /> <br/>
 
                 <input value={this.state.email.subject}
                     placeholder="Email subject" type="text" name="subject"
-                    onChange={this.onInputChange} />
+                    onChange={this.onInputChange} /> <br />
 
                 <input value={this.state.email.body}
                     placeholder="Email body" type="text" name="body"
-                    onChange={this.onInputChange} />
+                    onChange={this.onInputChange} /> <br />
                 <button>{(this.state.email.id) ? 'Update' : 'Send'}</button>
 
             </form>

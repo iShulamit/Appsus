@@ -2,12 +2,6 @@
     display: flex;
 }
 
-/* .home-title {
-    height: 100px;
-    width: 100%;
-    display: block;
-} */
-
 .home-links{
     margin: 150px auto;
     display: inline-flex;
